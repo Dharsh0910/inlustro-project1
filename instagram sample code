@@ -1,0 +1,193 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: InstagramHome(),
+    );
+  }
+}
+
+class InstagramHome extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text(
+          'Instagram',
+          style: TextStyle(
+            color: Colors.black,
+            fontFamily: 'Billabong',
+            fontSize: 32,
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add_box_outlined, color: Colors.black),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.favorite_border, color: Colors.black),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.send, color: Colors.black),
+            onPressed: () {},
+          ),
+        ],
+      ),
+      body: ListView(
+        children: [
+          // Stories Section
+          Container(
+            height: 100,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return StoryItem();
+              },
+            ),
+          ),
+          Divider(),
+
+          // Posts Section
+          Column(
+            children: List.generate(10, (index) => PostItem()),
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.video_library),
+            label: 'Reels',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag),
+            label: 'Shop',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class StoryItem extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 80,
+      margin: EdgeInsets.symmetric(horizontal: 5),
+      child: Column(
+        children: [
+          CircleAvatar(
+            radius: 30,
+            backgroundColor: Colors.grey[300],
+            backgroundImage: NetworkImage('https://via.placeholder.com/150'),
+          ),
+          SizedBox(height: 5),
+          Text(
+            'Story',
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class PostItem extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ListTile(
+          leading: CircleAvatar(
+            backgroundImage: NetworkImage('https://via.placeholder.com/150'),
+          ),
+          title: Text('Username'),
+          subtitle: Text('Location'),
+          trailing: Icon(Icons.more_vert),
+        ),
+        Image.network('https://via.placeholder.com/500'),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Icon(Icons.favorite_border),
+                  SizedBox(width: 16),
+                  Icon(Icons.comment),
+                  SizedBox(width: 16),
+                  Icon(Icons.send),
+                ],
+              ),
+              Icon(Icons.bookmark_border),
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8.0),
+          child: Text(
+            'Liked by user1 and others',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8.0),
+          child: RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Username ',
+                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                ),
+                TextSpan(
+                  text: 'This is a caption for the post.',
+                  style: TextStyle(color: Colors.black),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            'View all comments',
+            style: TextStyle(color: Colors.grey),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8.0),
+          child: Text(
+            '2 hours ago',
+            style: TextStyle(color: Colors.grey, fontSize: 12),
+          ),
+        ),
+      ],
+    );
+  }
+}
