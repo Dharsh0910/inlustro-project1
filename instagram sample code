@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
@@ -90,8 +90,7 @@ class InstagramHome extends StatelessWidget {
       ),
     );
   }
-}
-class StoryItem extends StatelessWidget {
+}class StoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -102,7 +101,7 @@ class StoryItem extends StatelessWidget {
           CircleAvatar(
             radius: 30,
             backgroundColor: Colors.grey[300],
-            backgroundImage: NetworkImage('https://via.placeholder.com/150'),
+            backgroundImage: NetworkImage('C:\Users\258007\StudioProjects\instagram1\images'),
           ),
           SizedBox(height: 5),
           Text(
@@ -129,7 +128,8 @@ class PostItem extends StatelessWidget {
           subtitle: Text('Location'),
           trailing: Icon(Icons.more_vert),
         ),
-        Image.network('https://via.placeholder.com/500'),
+        Image.asset('images/im2.jpg'
+            ''),
         Padding(
           padding: EdgeInsets.all(8.0),
           child: Row(
@@ -151,7 +151,7 @@ class PostItem extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.0),
           child: Text(
-            'Liked by user1 and others',
+            'Liked by dharshini,aiswariya,kaviya,akshaya and others',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
@@ -190,5 +190,3 @@ class PostItem extends StatelessWidget {
     );
   }
 }
-
-        
