@@ -91,7 +91,6 @@ class InstagramHome extends StatelessWidget {
     );
   }
 }
-
 class StoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -191,3 +190,5 @@ class PostItem extends StatelessWidget {
     );
   }
 }
+
+        
